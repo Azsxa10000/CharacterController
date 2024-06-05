@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://3i80uul31cbv"]
+
+[ext_resource type="Script" path="res://Entities/Controllers/CharacterController.gd" id="1_wddc0"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y881p"]
+radius = 0.35
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ad314"]
+
+[node name="CharacterController" type="CharacterBody3D" node_paths=PackedStringArray("collision_shape", "mesh")]
+script = ExtResource("1_wddc0")
+jump_height = 3.0
+time_to_peak = 2.0
+time_to_fall = 0.5
+collision_shape = NodePath("CollisionShape3D")
+mesh = NodePath("MeshInstance3D")
+crouch_height = 1.0
+target_height = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_y881p")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_ad314")
