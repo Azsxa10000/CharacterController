@@ -65,6 +65,7 @@ func _physics_process(delta: float) -> void:
 	## player horizontal movement
 	var input_direction = Input.get_vector("move_left","move_right","move_forward","move_backward") if movement_enabled else Vector2.ZERO
 	var direction = (camera_basis * Vector3(input_direction.x,0,input_direction.y)).normalized()
+	rotation.y = camera_controller.rotation.y
 	
 	## Sprint / crouch code 
 	# crouch

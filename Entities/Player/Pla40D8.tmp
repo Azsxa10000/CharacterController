@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://conxwir5hvx2n" path="res://Entities/Controllers/camera_controller.tscn" id="1_2rdu2"]
 [ext_resource type="PackedScene" uid="uid://3i80uul31cbv" path="res://Entities/Controllers/character_controller.tscn" id="1_isvly"]
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="CharacterBody3D"]
 
 [node name="CharacterController" parent="." node_paths=PackedStringArray("camera_controller") instance=ExtResource("1_isvly")]
 jump_height = 2.0
@@ -12,7 +12,7 @@ time_to_fall = 0.3
 camera_controller = NodePath("../CameraController")
 
 [node name="CameraController" parent="." instance=ExtResource("1_2rdu2")]
-third_person_camera_position = Vector3(2, 3, 4)
+third_person_camera_position = Vector3(2, 2, 1)
 spring_arm_length = 2.0
 first_person_camera_height = 1.0
 

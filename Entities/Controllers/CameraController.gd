@@ -4,13 +4,14 @@ extends Node3D
 @export_category("Camera_Data")
 @export var camera_sensitivity := 0.003
 @export var third_person_camera_position : Vector3
-@export var auto_length : bool = false:
-	set(val):
-		auto_length = val
-		update_spring_length()
 @export var spring_arm_length : float:
 	set(val):
 		spring_arm_length = val
+		update_spring_length()
+@export var auto_length : bool = false:
+	set(val):
+		print(auto_length)
+		auto_length = val
 		update_spring_length()
 @export var first_person_camera_height : float
 @export var default_fov := 80.0
@@ -22,8 +23,9 @@ var camera_type := 0:
 	# 1 == first person
 	# 2 == freecam
 	set(val):
-
-		if camera_type == 1 or camera_type == 2:
+		if camera_type == 0:
+			pass
+		else:
 			camera_override.emit()
 		camera_type = val # toggle freecam overriding movement keys
 		connect("camera_override",func():print())
@@ -47,7 +49,6 @@ signal camera_override
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.is_action_pressed("toggle_camera_type") and DebugMode and character_controller:
-			camera.position = third_person_camera_position
 			if camera_type >= 2:
 				camera_type = 0
 			else: 
@@ -76,8 +77,8 @@ func lerp_fov(delta:float, modifiers:Array,):
 #activated in _process() function,
 func _third_person(delta:float):
 	global_position = lerp(global_position, character_controller.global_position, delta * camera_speed)
-	spring_arm.position = third_person_camera_position
 	spring_arm.spring_length = lerp(spring_arm.spring_length,spring_arm_length,delta* camera_speed)
+	spring_arm.position.y = third_person_camera_position.y
 	#position = lerp(position,default_position_third_person_cam.rotated(Vector3(0,1,0),-rotation.y),delta * camera_speed  )
 	#character_controller.look_at(raycast,co)
 	

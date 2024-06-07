@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://3i80uul31cbv"]
+[gd_scene load_steps=5 format=3 uid="uid://3i80uul31cbv"]
 
 [ext_resource type="Script" path="res://Entities/Controllers/CharacterController.gd" id="1_wddc0"]
 
@@ -6,6 +6,11 @@
 radius = 0.35
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ad314"]
+radius = 0.4
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_aue0i"]
+radius = 0.3375
+height = 0.675
 
 [node name="CharacterController" type="CharacterBody3D" node_paths=PackedStringArray("collision_shape", "mesh")]
 script = ExtResource("1_wddc0")
@@ -25,3 +30,7 @@ skeleton = NodePath("")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_ad314")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4921, -0.396876)
+mesh = SubResource("CapsuleMesh_aue0i")
