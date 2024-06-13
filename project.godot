@@ -24,7 +24,6 @@ WindowSettings="*res://window_settings.gd"
 
 window/size/viewport_width=2560
 window/size/viewport_height=1600
-window/size/initial_position_type=2
 window/size/initial_position=Vector2i(0, 30)
 
 [input]
