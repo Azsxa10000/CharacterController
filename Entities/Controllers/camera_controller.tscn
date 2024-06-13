@@ -4,16 +4,23 @@
 
 [sub_resource type="SphereMesh" id="SphereMesh_b5jjl"]
 
-[node name="CameraController" type="Node3D" node_paths=PackedStringArray("camera", "spring_arm")]
+[node name="CameraController" type="Node3D" node_paths=PackedStringArray("camera", "spring_arm_out", "spring_arm_side")]
 script = ExtResource("1_oqorf")
-camera = NodePath("SpringArm3D/Camera3D")
-spring_arm = NodePath("SpringArm3D")
+camera = NodePath("SpringArmOut/Node3D/SpringArmSide/Camera3D")
+spring_arm_out = NodePath("SpringArmOut")
+spring_arm_side = NodePath("SpringArmOut/Node3D/SpringArmSide")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="."]
+[node name="SpringArmOut" type="SpringArm3D" parent="."]
 spring_length = 2.0
 margin = 2.0
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+[node name="Node3D" type="Node3D" parent="SpringArmOut"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SpringArm3D/Camera3D"]
+[node name="SpringArmSide" type="SpringArm3D" parent="SpringArmOut/Node3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SpringArmOut/Node3D/SpringArmSide"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpringArmOut/Node3D/SpringArmSide/Camera3D"]
 mesh = SubResource("SphereMesh_b5jjl")

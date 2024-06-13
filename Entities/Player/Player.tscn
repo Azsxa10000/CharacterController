@@ -13,7 +13,6 @@ camera_controller = NodePath("../CameraController")
 
 [node name="CameraController" parent="." instance=ExtResource("1_2rdu2")]
 third_person_camera_position = Vector3(2, 3, 4)
-spring_arm_length = 2.0
 first_person_camera_height = 1.0
 
 [connection signal="camera_override" from="CameraController" to="CharacterController" method="toggle_movement"]
