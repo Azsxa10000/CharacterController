@@ -14,10 +14,12 @@ enum CameraTypes {THIRD_PERSON,FIRST_PERSON,FREECAM}
 		third_person_camera_position = val
 		
 		if third_person_camera_position.x >= 0:
-			spring_arm_side.rotation_degrees.y = 0
+			spring_arm_side.rotation_degrees.y = 90
+			camera.rotation_degrees.y = -90
 		else:
-			spring_arm_side.rotation_degress.y = 90
-		
+			spring_arm_side.rotation_degress.y = -90
+			camera.rotation_degrees.y = 90
+			
 @export var auto_length : bool = true: # automatically handles spring arm length with third_person_camera_position
 	set(val):
 		auto_length = val
@@ -71,7 +73,6 @@ func _input(event: InputEvent) -> void:
 			basis = basis.rotated(basis.y,-event.relative.x * camera_sensitivity).orthonormalized()
 			spring_arm_out.basis = spring_arm_out.basis.rotated(spring_arm_out.basis.x,-event.relative.y * camera_sensitivity).orthonormalized()
 			spring_arm_out.rotation.x =  clampf(spring_arm_out.rotation.x,deg_to_rad(-80),deg_to_rad(80))
-			print(spring_arm_out.transform.basis.x)
 
 
 

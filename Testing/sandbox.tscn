@@ -47,8 +47,8 @@ navigation_mesh = SubResource("NavigationMesh_dhtit")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.23052, 1, -2.85025)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2305, 2, 7.14975)
-size = Vector3(5, 3, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3.5, 6.5)
+size = Vector3(10, 6, 1)
 
 [node name="Character" parent="." instance=ExtResource("2_7jdx5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.15143, 0.5, 2.36729)

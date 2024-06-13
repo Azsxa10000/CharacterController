@@ -1,6 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://conxwir5hvx2n"]
+[gd_scene load_steps=5 format=3 uid="uid://conxwir5hvx2n"]
 
 [ext_resource type="Script" path="res://Entities/Controllers/CameraController.gd" id="1_oqorf"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_3eri6"]
+height = 3.0
+radius = 2.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_y0sap"]
+height = 3.0
+radius = 2.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_b5jjl"]
 
@@ -11,13 +19,15 @@ spring_arm_out = NodePath("SpringArmOut")
 spring_arm_side = NodePath("SpringArmOut/Node3D/SpringArmSide")
 
 [node name="SpringArmOut" type="SpringArm3D" parent="."]
+shape = SubResource("CylinderShape3D_3eri6")
 spring_length = 2.0
-margin = 2.0
+margin = 1.0
 
 [node name="Node3D" type="Node3D" parent="SpringArmOut"]
 
 [node name="SpringArmSide" type="SpringArm3D" parent="SpringArmOut/Node3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_y0sap")
+margin = 1.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArmOut/Node3D/SpringArmSide"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
